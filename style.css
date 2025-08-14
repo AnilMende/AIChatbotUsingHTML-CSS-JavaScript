@@ -40,3 +40,14 @@ body{
     align-items: center;
 }
 
+.header-info .chatbot-logo{
+    width: 35px;
+    height: 35px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 6px;
+    fill: #5350C4;
+}
+
+
+
