@@ -13,6 +13,30 @@ body{
     justify-content: center;
 
     min-height: 100vh;
-    background: linear-gradient(rgb(158, 179, 203),rgb(150, 178, 209));
+    background: linear-gradient(rgb(220, 222, 228),rgb(133, 146, 190));
+}
+
+.chatbot-popup{
+    width: 420px;
+    background: white;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+    0 32px 64px -48px rgba(0, 0, 0, 0.5);
+}
+
+.chat-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: rgb(88, 105, 213);
+    padding: 15px 20px;
+}
+
+.chat-header .header-info{
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
