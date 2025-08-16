@@ -22,10 +22,16 @@ const handleOutgoingMessage = (e) => {
     e.preventDefault();
     userData.message = messageInput.value.trim()
 
+    // clearing the textarea after the message is sent
+    messageInput.value = ""
+
+    
     // create and display user image
-    const messageContent = `<div class="message-text">${userData.message}</div>`;
+    const messageContent = `<div class="message-text"></div>`;
     const outgoingMessageDiv = createMessageElement(messageContent,"user-message");
 
+    // making element as textcontent
+    outgoingMessageDiv.querySelector(".message-text").textContent = userData.message;
     chatBody.appendChild(outgoingMessageDiv);
 }
 
