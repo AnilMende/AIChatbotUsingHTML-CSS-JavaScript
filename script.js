@@ -12,7 +12,6 @@ const userData = {
 }
 
 
-
 // create a message element with dynamic classes and return it
 const createMessageElement = (content,...classes) => {
     const div = document.createElement("div");
@@ -22,8 +21,42 @@ const createMessageElement = (content,...classes) => {
     return div;
 }
 
+// Generate Bot response using API
+const generateBotresponse = async (incomingMessageDiv) => {
 
-const generateBotresponse = () => {
+    const messageElement = incomingMessageDiv.querySelector(".message-text");
+
+    // API request options
+    const requestOptions = {
+        method:"POST",
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+            contents:[{
+                parts:[{text: userData.message}]
+            }]
+        })
+    }
+
+    try{
+        // Fetch bot response from API
+
+        const response = await fetch(API_URL,requestOptions);
+        const data = await response.json();
+
+        if(!response.ok) throw new Error(data.error.message);
+
+
+        // Extract and display bot's response text
+        // console.log(data);
+        const apiResponseText = data.candidates[0].content.parts[0].text.trim();
+
+        messageElement.innerText = apiResponseText;
+
+    }catch(error){
+        console.log(error)
+    }finally{
+        incomingMessageDiv.classList.remove("thinking");
+    }
 
 }
 
@@ -65,7 +98,7 @@ const handleOutgoingMessage = (e) => {
        // incomingMessageDiv.querySelector(".message-text").textContent = userData.message;
        chatBody.appendChild(incomingMessageDiv);
 
-       generateBotresponse();
+       generateBotresponse(incomingMessageDiv);
 
     },600)
 }
