@@ -87,6 +87,10 @@ body{
     flex-direction: column;
     overflow-y: auto;
     margin-bottom: 80px;
+    /* for scrollbar */
+    align-self: flex-end;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(151, 151, 211) transparent;
 }
 
 .chat-body .message{
